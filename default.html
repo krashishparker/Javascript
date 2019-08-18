@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>
+    DOM manipulation
+</title>
+<script type="text/javascript">
+    function buttonclick(){
+       // alert("button clicked");
+       document.getElementById("heading2").innerHTML="JAVA SCRIPT LEARNING";
+      /*IN OM here h2 in body is a object 
+      whose property can be change ussing innerHTML */
+     var str= document.getElementById("heading2").innerHTML="JAVA SCRIPT LEARNING";
+     alert(str);
+    }
+    function fnc(){
+  var str1=document.getElementById("text1").value;
+  var str2=document.getElementById("text2").value;
+  if(str1==str2)
+  alert("password is confirmed");
+  else
+  alert("password is not same");}
+
+  /*radio button are grouped with name feature 
+  to choose single or more value*/
+  function fnc1(){
+      var rd1=document.getElementById("rd1");
+      var rd2=document.getElementById("rd2");
+  if(rd1.checked==true){
+  alert("the seleted term is:"+rd1.value);
+}
+else if(rd2.checked==true){
+    alert("the selected term is:"+rd2.value);
+}
+else alert("please selet any option");
+    }
+
+function fnc3(){
+var select=document.getElementById("selection");
+alert(select.options[select.selectedIndex].value);}
+/*
+getElementbyTagName store same kind of tag data in array
+*/
+function changestyle(){
+    var para=document.getElementsByTagName("p");
+    para[0].style.fontSize=25;
+    para[1].style.backgroundColor="yellow";
+    para[2].style.fontWeight="bold";
+    para[3].style.fontStyle="italic";
+}
+
+/*
+getElementbyClassName store same kind of class data in array.
+previously all element of same tag get selected.
+*/
+
+function changestyle2(){
+    var para=document.getElementsByClassName("c1");
+    for(var i=0;i<para.length;i++){
+        para[i].style.color="red";
+    }}
+/*
+MOUSEOVER and mouseout event
+*/
+function setnewImage(){
+   var img=document.getElementById("img1").src="iron2.jpg";
+
+}
+function setoldImage(){
+ var img=document.getElementById("img1").src="iron.jpg";
+}
+
+
+/* FORM VALIDATION  using form keyword and many more important
+features for username and password validations
+*/
+function validate(){
+  var val1=document.getElementById("user");
+   var val2=document.getElementById("pass");
+   if(val1.value.trim()==""||val2.value.trim()=="")
+   {
+       alert("No blanck space is accepted");/*we can use html tag 
+       required in input tag to perform the same*/
+       return false;
+   }
+   else return true;
+}    
+
+function validate2(){
+var text=document.getElementById("mail").value;
+var regx = /^([a-z 0-9\.-]+)@([a-z A-Z 0-9 -]+).([a-z]+)$/;
+if(regx.test(text)){
+document.getElementById("label").innerHTML="valid";
+document.getElementById("label").style.visibility="visible";
+document.getElementById("label").style.color="green";
+}
+else{
+document.getElementById("label").innerHTML="Invalid";
+document.getElementById("label").style.visibility="visible";
+document.getElementById("label").style.color="red";
+}
+}
+
+</script>
+</head>
+
+<body background="pic.jpg">
+   
+   <button onclick="buttonclick()">click me</button>
+ <h2 id="heading2">#some random text & begining of Javascript Learning</h2>
+
+<h2 style="color:blue; background:aqua">PLACEHOLDER FEATURE IN JS </h2>
+ <input id="text1" placeholder="password" type="password"\><br></br>
+ <input id="text2" placeholder="confirm password" type="password"\>
+ <br></br>
+ <button id="btn1" onclick="fnc()">submit</button>
+ <br></br>
+
+
+ <h2 style="color:blue; background:aqua">RADIO BUTTON FEATURE IN JS </h2>
+ <input id="rd1" name="grp5" type="radio" value="ashish_kumar">ashish_kumar</input>
+  <br>
+  </br>
+   <input id="rd2" name="grp5" type="radio" value="rajnish_kumar">rajnish_kumar</input>
+<br></br>
+<button onclick="fnc1()" id="btn2">click here</button>
+   <br></br> 
+
+
+
+   <h2 style="color:blue; background:aqua">SELECT FEATURE IN JS </h2>
+ <select id="selection">
+     <option value="ashish">ashish_kumar </option>
+     <option value="wilson">wade_wilson </option>
+      <option value="parker">parker_ashish</option>
+     <option value="kin">abhi_kin</option>
+     </select>   
+     <br></br>
+   <button id="btn3" onclick="fnc3()">click me</button>
+ <br></br>
+
+<h2 style="color:blue; background:aqua">MOUSEOVER AND MOUSEOUT </h2>
+
+<img id="img1" onmouseover="setnewImage()" onmouseout="setoldImage()" src="iron.jpg" width="500"/>
+<br></br>
+
+<h1 style="color:blue; background:aqua">GetElementbyTagName FEATURES IN JS </h1>
+ <p>this is paragraph1</p>
+ <p>this is paragraph2</p>
+ <p>this is paragraph3</p>
+ <p>this is paragrap4</p>
+<button id="btn4" onclick="changestyle()">click here</button>
+
+<h1 style="color:blue; background:aqua">GetElementbyTagName FEATURES IN JS WITH SEPARATE CLASS </h1>
+<p class="c1">this is paragraph1</p>
+ <p>this is paragraph2</p>
+ <p class="c1">this is paragraph3</p>
+ <p>this is paragrap4</p>
+ <a href="#" class="c1">link to same page</a><br>
+<button id="btn5" onclick="changestyle2()">click here</button>
+<br></br>
+
+
+<h2 style="color:blue; background:aqua">FORM VALIDATION </h2>
+<form onsubmit=" return validate()" action="msg.html">
+    <input id="user" placeholder="username" type="text"/><br></br>
+ <input id="pass" placeholder="password" type="password"/>
+ <br></br>
+ <button  type="submit">submit</button>
+</form>
+
+<h2 style="color:blue; background:aqua">E mail VALIDATION using regular expression </h2>
+<form>
+    <input placeholder="email" id="mail" type="text"/><br>
+    <label id="label" style="color:red; visibility:hidden">INVALID
+   </label>
+   <br></br>
+   <button onclick="validate2()" type="button">submit</button>
+</form>
+
+
+
+</body>
+</html>
